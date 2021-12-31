@@ -1,0 +1,17 @@
+main: com.astrainteractive.astratemplate.AstraTemplate
+name: AstraTemplate
+prefix: AstraTemplate
+version: '${project.version}'
+authors: [ MakeevRoman ]
+author: MakeevRoman
+website: AstraInteractive.ru
+api-version: 1.17
+softdepend: [ ]
+depend: [ ]
+commands:
+  atempreload:
+  atempgui:
+  test:
+  atemp:
+    usage: |
+      /atemp - Перезагружает плагин
