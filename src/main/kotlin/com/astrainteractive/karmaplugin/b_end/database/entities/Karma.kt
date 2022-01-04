@@ -1,15 +1,30 @@
 package com.astrainteractive.karmaplugin.b_end.database.entities
 
+import com.astrainteractive.astralibs.Logger
+import com.astrainteractive.karmaplugin.b_end.database.InsertQuery
 import java.util.*
 
 
-class KarmaEntity(val id: Int,
-                  val minecraftUuid: String,
-                  val minecraftUsername: String,
-                  val discordId: String,
-                  val karma: Int,
-                  val date: Date,
-                  val reason: String){
+class Karma(val id: Int,
+            val minecraftUuid: String,
+            val minecraftUsername: String,
+            val discordId: String,
+            val karma: Int,
+            val date: Date,
+            val reason: String){
+
+    public fun getInsertQuery(): String?{
+        val command = InsertQuery.Builder()
+            .table(Karma.table)
+            .columns(Karma.minecraftUuid.name, Karma.minecraftUsername.name,
+                     Karma.discordId.name, Karma.karma.name,
+                     Karma.date.name, Karma.reason.name)
+            .values(minecraftUuid,minecraftUsername,
+                    discordId,karma,date,reason)
+            .build()
+        return command
+    }
+
     companion object {
         public fun getTableCreationCommand(): String {
             var command = "CREATE TABLE IF NOT EXISTS ${table} ("
@@ -41,5 +56,6 @@ class KarmaEntity(val id: Int,
             listOf(id, minecraftUuid, minecraftUsername, discordId, karma, date, reason)
 
         val primaryKeyConstraint: String = "PRIMARY KEY (${id.name})"
+
     }
 }

@@ -2,6 +2,7 @@ package com.astrainteractive.astratemplate.sqldatabase
 
 import com.astrainteractive.astralibs.catching
 import com.astrainteractive.astratemplate.sqldatabase.entities.User
+import com.astrainteractive.karmaplugin.b_end.database.InsertQuery
 import java.sql.ResultSet
 import javax.xml.crypto.Data
 
@@ -56,39 +57,4 @@ inline fun ResultSet.forEach(rs: (ResultSet) -> Unit) {
 
 fun <T> ResultSet.asSequence(extract: () -> T): Sequence<T> = generateSequence {
     if (this.next()) extract() else null
-}
-
-
-@Deprecated("Какой-то кал. Надо использовать обычные команды SQL")
-class InsertQuery private constructor() {
-
-    data class Builder(
-        private val command: String = "INSERT INTO",
-        private var table: String? = null,
-        private var columns: String? = null,
-        private var values: String? = null
-    ) {
-
-        fun table(table: String) = apply { this.table = table }
-        fun columns(vararg columns: String) = apply { this.columns = "(${columns.joinToString(", ")})" }
-
-
-        private fun Array<out Any>.parseSQLValues(): String {
-            val list = mutableListOf<Any>()
-            this.forEach {
-                if (it is String)
-                    list.add("\'$it\'")
-                else list.add("\'$it\'")
-            }
-            return "(${list.joinToString(",")})"
-        }
-
-
-        fun values(vararg values: Any) = apply { this.values = values.parseSQLValues() }
-
-        fun build(): String? {
-            return "$command $table ${columns ?: ""} VALUES ${values ?: return null};"
-        }
-    }
-
 }
