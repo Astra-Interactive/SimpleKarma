@@ -100,7 +100,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>D:\Minecraft Servers\TEST_SERVER\plugins\EmpireTemplate.jar</outputFile>
+                            <outputFile>D:\DEBUG\debug_server\plugins\KarmaPlugin.jar</outputFile>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
