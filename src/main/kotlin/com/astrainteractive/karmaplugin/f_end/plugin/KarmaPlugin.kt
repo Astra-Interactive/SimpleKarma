@@ -2,11 +2,10 @@ package com.astrainteractive.karmaplugin.f_end.plugin
 
 import com.astrainteractive.astralibs.AstraLibs
 import com.astrainteractive.astralibs.Logger
-import com.astrainteractive.astratemplate.AstraTemplate
 import com.astrainteractive.karmaplugin.b_end.database.Database
 import com.astrainteractive.karmaplugin.f_end.commands_handling.CommandManager
 import com.astrainteractive.karmaplugin.f_end.event_handling.EventHandler
-import com.astrainteractive.karmaplugin.f_end.utils.Config
+import com.astrainteractive.karmaplugin.f_end.utils.config.Config
 import com.astrainteractive.karmaplugin.f_end.utils.Files
 import com.astrainteractive.karmaplugin.f_end.utils.Translation
 import org.bukkit.event.HandlerList
@@ -33,7 +32,7 @@ class KarmaPlugin : JavaPlugin() {
         instance = this
         translations = Translation()
         files = Files()
-        pluginConfig = Config()
+        pluginConfig = Config.get()
         eventHandler = EventHandler()
         commandManager = CommandManager()
     }
