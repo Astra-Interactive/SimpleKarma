@@ -1,0 +1,2 @@
+mvn install:install-file -Dfile=<PROJECT_ROOT>\src\main\resources\libs\a_libs\astralibs-1.0.23.jar -DgroupId=com.astrainteractive -DartifactId=astralibs -Dversion=1.0.23 -Dpackaging=com.astrainteractive.astralibs
+mvn install:install-file -Dfile=<PROJECT_ROOT>\src\main\resources\libs\a_libs\astralibs-1.0.23.jar -DpomFile=<PROJECT_ROOT>\src\main\resources\libs\a_libs\astralibs-1.0.23.pom
