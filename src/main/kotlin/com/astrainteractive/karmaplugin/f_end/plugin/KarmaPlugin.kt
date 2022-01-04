@@ -1,23 +1,64 @@
 package com.astrainteractive.karmaplugin.f_end.plugin
 
+import com.astrainteractive.astralibs.AstraLibs
+import com.astrainteractive.astralibs.Logger
 import com.astrainteractive.astratemplate.AstraTemplate
-import com.astrainteractive.astratemplate.sqldatabase.Database
+import com.astrainteractive.karmaplugin.b_end.database.Database
+import com.astrainteractive.karmaplugin.f_end.commands_handling.CommandManager
+import com.astrainteractive.karmaplugin.f_end.event_handling.EventHandler
 import com.astrainteractive.karmaplugin.f_end.utils.Config
 import com.astrainteractive.karmaplugin.f_end.utils.Files
 import com.astrainteractive.karmaplugin.f_end.utils.Translation
+import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
 
 class KarmaPlugin : JavaPlugin() {
     companion object {
-        lateinit var instance: AstraTemplate
+        lateinit var instance: KarmaPlugin
             private set
         lateinit var translations: Translation
             private set
-        lateinit var empireFiles: Files
+        lateinit var files: Files
             private set
         lateinit var pluginConfig: Config
             private set
-        public lateinit var database: Database
-            private set
     }
+
+    private lateinit var eventHandler: EventHandler
+    private lateinit var commandManager: CommandManager
+
+    private fun liteEnable(){
+        AstraLibs.create(this)
+        Logger.init("KarmaPlugin")
+        instance = this
+        translations = Translation()
+        files = Files()
+        pluginConfig = Config()
+        eventHandler = EventHandler()
+        commandManager = CommandManager()
+    }
+
+    private fun liteDisable(){
+        eventHandler.onDisable()
+        HandlerList.unregisterAll(this)
+    }
+
+    override fun onEnable(){
+        liteEnable()
+        Database.onEnable()
+    }
+    override fun onDisable() {
+        liteDisable()
+        Database.onDisable()
+    }
+
+    fun liteReload(){
+        liteDisable()
+        liteEnable()
+    }
+    fun reload(){
+        onDisable()
+        onEnable()
+    }
+
 }
