@@ -1,9 +1,6 @@
 import com.astrainteractive.astralibs.AstraLibs
 import com.astrainteractive.astralibs.registerTabCompleter
 import com.astrainteractive.astralibs.withEntry
-import com.astrainteractive.astratemplate.AstraTemplate
-import com.astrainteractive.astratemplate.commands.EmpireTabCompleter
-import com.astrainteractive.astratemplate.commands.Gui
 import com.astrainteractive.astratemplate.commands.Reload
 
 
@@ -29,7 +26,6 @@ class CommandManager {
             return@registerTabCompleter listOf<String>()
         }
         Reload()
-        Gui()
     }
 
 
