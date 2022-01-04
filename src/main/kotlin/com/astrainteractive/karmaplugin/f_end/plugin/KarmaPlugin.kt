@@ -37,7 +37,6 @@ class KarmaPlugin : JavaPlugin() {
         eventHandler = EventHandler()
         commandManager = CommandManager()
     }
-
     private fun liteDisable(){
         eventHandler.onDisable()
         HandlerList.unregisterAll(this)
