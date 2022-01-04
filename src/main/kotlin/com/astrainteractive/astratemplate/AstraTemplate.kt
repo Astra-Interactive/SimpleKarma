@@ -4,10 +4,6 @@ package com.astrainteractive.astratemplate
 import CommandManager
 import com.astrainteractive.astralibs.AstraLibs
 import com.astrainteractive.astralibs.Logger
-import com.astrainteractive.astratemplate.sqldatabase.Database
-import com.astrainteractive.astratemplate.utils.EmpireTranslation
-import com.astrainteractive.astratemplate.utils.Files
-import com.astrainteractive.astratemplate.utils.config.EmpireConfig
 import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -18,18 +14,9 @@ class AstraTemplate : JavaPlugin() {
 
     /**
      * Static objects of this class
-     * @see EmpireTranslation
      */
     companion object {
         lateinit var instance: AstraTemplate
-            private set
-        lateinit var translations: EmpireTranslation
-            private set
-        lateinit var empireFiles: Files
-            private set
-        lateinit var pluginConfig: EmpireConfig
-            private set
-        public lateinit var database: Database
             private set
     }
 
@@ -53,12 +40,7 @@ class AstraTemplate : JavaPlugin() {
         AstraLibs.create(this)
         Logger.init("AstraTemplate")
         instance = this
-        translations = EmpireTranslation()
-        empireFiles = Files()
         commandManager = CommandManager()
-        pluginConfig = EmpireConfig.new2()
-        println(pluginConfig)
-        database = Database()
         Logger.log("onEnable","1","2",logInFile = true)
     }
 
@@ -68,8 +50,6 @@ class AstraTemplate : JavaPlugin() {
      * Or when PlugMan disable plugin.
      */
     override fun onDisable() {
-        eventHandler.onDisable()
-        database.onDisable()
         HandlerList.unregisterAll(this)
     }
 

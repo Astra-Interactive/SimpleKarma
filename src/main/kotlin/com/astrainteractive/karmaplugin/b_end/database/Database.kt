@@ -22,7 +22,8 @@ object Database {
     public fun onEnable(){
         connectDatabase()
         if(isInitialized){
-            Logger.log("DB Initialization was completed")
+            if(KarmaPlugin.config.logging)
+                Logger.log("DB Initialization was completed")
         }
         //Repository.createUserTable()
         //val user = User("id${Random.nextInt(20000)}", "mine${Random.nextInt(5000)}")

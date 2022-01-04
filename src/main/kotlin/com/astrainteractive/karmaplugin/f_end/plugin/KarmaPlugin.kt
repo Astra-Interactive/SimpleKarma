@@ -19,7 +19,7 @@ class KarmaPlugin : JavaPlugin() {
             private set
         lateinit var files: Files
             private set
-        lateinit var pluginConfig: Config
+        lateinit var config: Config
             private set
     }
 
@@ -32,7 +32,7 @@ class KarmaPlugin : JavaPlugin() {
         instance = this
         translations = Translation()
         files = Files()
-        pluginConfig = Config.get()
+        KarmaPlugin.config = Config.get()
         eventHandler = EventHandler()
         commandManager = CommandManager()
     }
