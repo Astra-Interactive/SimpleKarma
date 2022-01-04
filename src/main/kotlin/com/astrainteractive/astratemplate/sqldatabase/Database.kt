@@ -47,7 +47,6 @@ class Database {
 
 
     init {
-
         connectDatabase()
         Repository.createUserTable()
         val user = User("id${Random.nextInt(20000)}", "mine${Random.nextInt(5000)}")
