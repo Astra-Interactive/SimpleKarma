@@ -4,7 +4,6 @@ package com.astrainteractive.astratemplate
 import CommandManager
 import com.astrainteractive.astralibs.AstraLibs
 import com.astrainteractive.astralibs.Logger
-import com.astrainteractive.astratemplate.events.EventHandler
 import com.astrainteractive.astratemplate.sqldatabase.Database
 import com.astrainteractive.astratemplate.utils.EmpireTranslation
 import com.astrainteractive.astratemplate.utils.Files
@@ -35,13 +34,6 @@ class AstraTemplate : JavaPlugin() {
     }
 
     /**
-     * Class for handling all of your events
-     *
-     * Should be private
-     */
-    private lateinit var eventHandler: EventHandler
-
-    /**
      * Command manager for your commands.
      *
      * You can create multiple managers.
@@ -63,7 +55,6 @@ class AstraTemplate : JavaPlugin() {
         instance = this
         translations = EmpireTranslation()
         empireFiles = Files()
-        eventHandler = EventHandler()
         commandManager = CommandManager()
         pluginConfig = EmpireConfig.new2()
         println(pluginConfig)
