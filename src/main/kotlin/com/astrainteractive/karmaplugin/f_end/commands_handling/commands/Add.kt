@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender
 
 object Add {
     fun command(sender: CommandSender, args: Array<out String>){
-        if (!sender.hasPermission(Permissions.SET))
+        if (!sender.hasPermission(Permissions.ADD))
             return
         val player     = args[1]
         val karmaValue = args[2].toInt()

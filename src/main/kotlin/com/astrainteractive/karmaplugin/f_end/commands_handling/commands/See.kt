@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender
 
 object See {
     fun command(sender: CommandSender, args: Array<out String>){
-        if (!sender.hasPermission(Permissions.SET))
-            return
         val player     = args[1]
         val karma = KarmaService.getKarma(player)
         sender.sendMessage(KarmaPlugin.translations.SUCCESS_COMMAND)

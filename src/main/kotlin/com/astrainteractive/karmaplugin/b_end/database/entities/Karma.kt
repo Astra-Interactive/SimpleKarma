@@ -1,6 +1,5 @@
 package com.astrainteractive.karmaplugin.b_end.database.entities
 
-import com.astrainteractive.astralibs.Logger
 import com.astrainteractive.karmaplugin.b_end.database.InsertQuery
 import java.util.*
 

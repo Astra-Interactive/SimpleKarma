@@ -36,7 +36,7 @@ class KarmaPlugin : JavaPlugin() {
         KarmaPlugin.config = Config.get()
         eventHandler = EventHandler()
         commandManager = CommandManager()
-        Logger.log("Plugin was launched, config:${KarmaPlugin.config.logging}")
+        Logger.log("Plugin was launched, logging:${KarmaPlugin.config.logging}")
     }
     private fun liteDisable(){
         eventHandler.onDisable()

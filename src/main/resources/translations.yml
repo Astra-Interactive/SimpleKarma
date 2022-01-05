@@ -1,5 +1,7 @@
-PLUGIN_PREFIX: "#18dbd1[EmpireItems]"
-RELOAD: "#dbbb18Перезагрузка плагина"
-RELOAD_COMPLETE: "#42f596Перезагрузка успешно завершена"
-SAVE_ERROR: "#db2c18Не удалось сохранить файл"
-NONSTANDART_FILE: "#db2c18Нестнадартный файл"
+PLUGIN_INFO: Плагин вводит меру кармы -- игроки могут штрафовать и поощрать других игроков
+
+RELOAD: Начало перезапуска...
+RELOAD_SUCCESS: Перезапуск завершён
+
+SUCCESS_COMMAND: Команда выполнена успешно
+FAILED_COMMAND: Команда не была выполнена
