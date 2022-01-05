@@ -4,10 +4,8 @@ import com.astrainteractive.karmaplugin.b_end.database.Repository
 import com.astrainteractive.karmaplugin.b_end.database.entities.Karma
 
 object KarmaService {
-    val cache = HashMap<String, Int>()
-
-
-    fun cachePlayer(player: String){
+    private val cache = HashMap<String, Int>()
+    private fun cachePlayer(player: String){
         val karma: Int = Repository.getSumKarma(player)?:0
         cache[player] = karma
     }
@@ -29,8 +27,11 @@ object KarmaService {
         val toBeAdded = value-prev
         addKarma(player,toBeAdded)
     }
-
     fun onPlayerJoin(player: String){
-        cachePlayer(player)
+        if(!cache.containsKey(player))
+            cachePlayer(player)
+    }
+    fun onDisable(){
+        cache.clear()
     }
 }

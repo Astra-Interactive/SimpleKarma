@@ -22,6 +22,7 @@ object Database {
     public fun onEnable(){
         connectDatabase()
         if(isInitialized){
+            Repository.createKarmaTable()
             if(KarmaPlugin.config.logging)
                 Logger.log("DB Initialization was completed")
         }

@@ -3,6 +3,7 @@ package com.astrainteractive.karmaplugin.f_end.plugin
 import com.astrainteractive.astralibs.AstraLibs
 import com.astrainteractive.astralibs.Logger
 import com.astrainteractive.karmaplugin.b_end.database.Database
+import com.astrainteractive.karmaplugin.b_end.services.KarmaService
 import com.astrainteractive.karmaplugin.f_end.commands_handling.CommandManager
 import com.astrainteractive.karmaplugin.f_end.event_handling.EventHandler
 import com.astrainteractive.karmaplugin.f_end.utils.config.Config
@@ -39,6 +40,7 @@ class KarmaPlugin : JavaPlugin() {
     }
     private fun liteDisable(){
         eventHandler.onDisable()
+        KarmaService.onDisable()
         HandlerList.unregisterAll(this)
     }
 

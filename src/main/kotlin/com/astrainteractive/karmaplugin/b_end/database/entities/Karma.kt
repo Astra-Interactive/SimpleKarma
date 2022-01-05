@@ -20,7 +20,7 @@ class Karma(val id: Int = -1,
                      Karma.discordId.name, Karma.karma.name,
                      Karma.date.name, Karma.reason.name)
             .values(minecraftUuid,minecraftUsername,
-                    discordId,karma,date,reason)
+                    discordId,karma,date.toString(),reason)
             .build()
         return command
     }

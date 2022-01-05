@@ -9,21 +9,25 @@ import java.sql.ResultSet
 object Repository {
     fun createKarmaTable() =
         catching {
-            Database.connection
-                .prepareStatement(Karma.getTableCreationCommand()).execute()
+            val command = Karma.getTableCreationCommand()
+            if(KarmaPlugin.config.logging)
+                Logger.log("Command",command)
+            Database.connection.prepareStatement(command).execute()
         }
     fun insertKarma(karma: Karma) = catching {
         val command = karma.getInsertQuery()
         if(KarmaPlugin.config.logging)
-            Logger.log(command?:"NULL INSERTION")
+            Logger.log("Command",command?:"NULL INSERTION")
         Database.connection.createStatement().executeUpdate(command)
     }
     fun getSumKarma(player: String):Int? = catching {
         val command =
             "SELECT SUM(${Karma.karma.name}) " +
-            "FROM ${Karma.table}" +
-            "WHERE ${Karma.minecraftUsername.name} = $player" +
+            "FROM ${Karma.table} " +
+            "WHERE ${Karma.minecraftUsername.name} = '$player'" +
             ";"
+        if(KarmaPlugin.config.logging)
+            Logger.log("Command",command)
         val rs = Database.connection.createStatement().executeQuery(command)
         var res:Int? = null
         rs.forEach {
