@@ -1,8 +1,8 @@
-package com.astrainteractive.karmaplugin.f_end.utils
+package com.astrainteractive.karmaplugin.utils
 
 import com.astrainteractive.astralibs.FileManager
 
-public class Files() {
+class Files {
     val configFile: FileManager =
         FileManager("config.yml")
 }

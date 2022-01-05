@@ -1,12 +1,21 @@
-main: com.astrainteractive.karmaplugin.f_end.plugin.KarmaPlugin
+main: com.astrainteractive.karmaplugin.KarmaPlugin
+description: Simple karma plugin for servers
 name: KarmaPlugin
 prefix: KarmaPlugin
 version: '${project.version}'
-authors: [ _ ]
-author: _
+authors: [ MikhailArzumanov ]
+author: MikhailArzumanov
 website: AstraInteractive.ru
-api-version: 1.17
+api-version: 1.18
 softdepend: [ ]
 depend: [ ]
+loadbefore: [ Vault ]
 commands:
   karma:
+    description: Add karma to player
+    usage: |
+      /<command> <add> <player> <amount> <message>
+      /<command> reload
+      /<command> see <player>
+
+    permission: karma.add

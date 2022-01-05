@@ -1,15 +1,15 @@
-package com.astrainteractive.karmaplugin.f_end.event_handling.events
+package com.astrainteractive.karmaplugin.events.events
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerJoinEvent
 import com.astrainteractive.astralibs.IAstraListener
-import com.astrainteractive.karmaplugin.b_end.services.KarmaService
+import com.astrainteractive.karmaplugin.services.KarmaService
 
 class CachePlayerEvent : IAstraListener {
 
     @EventHandler
     public fun playerJoinEvent(e: PlayerJoinEvent){
-        KarmaService.onPlayerJoin(e.player.name)
+        KarmaService.onPlayerJoin(e.player)
     }
 
     public override fun onDisable() {
