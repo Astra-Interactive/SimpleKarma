@@ -37,9 +37,11 @@ class Karma(val id: Int = -1,
 
         private fun getMinecraftUuid(minecraftUsername: String): String{
             //TODO: implement appellation to users table
+            return ""
         }
         private fun getMinecraftDiscordId(minecraftUsername: String): String{
             //TODO: implement appellation to users table
+            return ""
         }
 
         public fun getByFields(player: String, value: Int, reason: String): Karma{

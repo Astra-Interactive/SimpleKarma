@@ -1,4 +1,20 @@
 package com.astrainteractive.karmaplugin.f_end.commands_handling.commands
 
-class Set {
+import com.astrainteractive.astralibs.AstraLibs
+import com.astrainteractive.astralibs.Logger
+import com.astrainteractive.astralibs.registerCommand
+import com.astrainteractive.karmaplugin.b_end.services.KarmaService
+import com.astrainteractive.karmaplugin.f_end.plugin.KarmaPlugin
+import com.astrainteractive.karmaplugin.f_end.utils.Permissions
+import org.bukkit.command.CommandSender
+
+object Set {
+    fun command(sender: CommandSender, args: Array<out String>){
+        if (!sender.hasPermission(Permissions.SET))
+            return
+        val player     = args[1]
+        val karmaValue = args[2].toInt()
+        KarmaService.setKarma(player, karmaValue)
+        sender.sendMessage(KarmaPlugin.translations.SUCCESS_COMMAND)
+    }
 }
