@@ -5,7 +5,7 @@ import com.astrainteractive.karmaplugin.b_end.database.InsertQuery
 import java.util.*
 
 
-class Karma(val id: Int,
+class Karma(val id: Int = -1,
             val minecraftUuid: String,
             val minecraftUsername: String,
             val discordId: String,
@@ -33,6 +33,28 @@ class Karma(val id: Int,
             command += primaryKeyConstraint
             command += ");"
             return command
+        }
+
+        private fun getMinecraftUuid(minecraftUsername: String): String{
+            //TODO: implement appellation to users table
+        }
+        private fun getMinecraftDiscordId(minecraftUsername: String): String{
+            //TODO: implement appellation to users table
+        }
+
+        public fun getByFields(player: String, value: Int, reason: String): Karma{
+            return Karma(
+                minecraftUuid = getMinecraftUuid(player),
+                minecraftUsername = player,
+                discordId = getMinecraftDiscordId(player),
+                karma = value,
+                date = Calendar.getInstance().time,
+                reason = reason
+            )
+        }
+
+        public fun getByPlayerAndValue(player: String, value: Int): Karma{
+            return getByFields(player,value,"")
         }
 
         val table: String = "karma"
